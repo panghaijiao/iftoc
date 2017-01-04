@@ -8,7 +8,7 @@ Converts CSS StyleSheets for IconFont like [iconfont.css](https://github.com/pan
 ## Example
 
 - Input: [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css)
-- Output: [Iconfont.h](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.h) [Iconfont.m](https://github.com/panghaijiao/iftoc/blob/master//iconfont/Iconfont.m)
+- Output: [Iconfont.h](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.h)  [Iconfont.m](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.m)
 
 ## Installation
 
