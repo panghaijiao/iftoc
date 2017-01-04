@@ -34,19 +34,7 @@ Iconfont.css can be created automatically from web [http://www.iconfont.cn](http
 
 .
 
-├── demo.css
-
-├── demo_fontclass.html
-
-├── demo_symbol.html
-
-├── demo_unicode.html
-
 ├── **iconfont.css**
-
-├── iconfont.eot
-
-├── iconfont.js
 
 ├── iconfont.svg
 
