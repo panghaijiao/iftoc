@@ -27,6 +27,22 @@ Usage: iftoc \<cssfile> [--out \<outpath>]
 or
 
 	$ iftoc iconfont.css --out /iconfont
+
+## iconfont.css
+
+Iconfont.css can be created automatically from web [http://www.iconfont.cn](http://www.iconfont.cn/)
+
+.
+├── demo.css
+├── demo_fontclass.html
+├── demo_symbol.html
+├── demo_unicode.html
+├── **iconfont.css**
+├── iconfont.eot
+├── iconfont.js
+├── iconfont.svg
+├── iconfont.ttf
+└── iconfont.woff
     
 ## Development
 
