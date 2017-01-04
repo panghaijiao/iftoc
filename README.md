@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ## Usage
 
-Usage: iftoc <cssfile> [-out <outpath>]
+Usage: iftoc \<cssfile> [-out \<outpath>]
 
 ## Development
 
