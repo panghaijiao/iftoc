@@ -7,7 +7,7 @@ $inpath = ARGV[0]
 $outpath = File.dirname(__FILE__)
 
 $helpString = <<-EOB
-Usage: iftoc <cssfile> [-out <outpath>]
+Usage: iftoc <cssfile> [--out <outpath>]
 EOB
 
 def paramCheck

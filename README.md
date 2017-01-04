@@ -3,20 +3,31 @@
 ![](http://img.shields.io/travis/CocoaPods/CocoaPods/master.svg?style=flat)
 ![](http://img.shields.io/gem/v/cocoapods.svg?style=flat)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/iftoc`. To experiment with that code, run `bin/console` for an interactive prompt.
+Converts CSS StyleSheets for IconFont like [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css) to OC code file automatically
 
-TODO: Delete this and the text above, and describe your gem
+## Example
+
+- Input: [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css)
+- Output: [Iconfont.h](https://github.com/panghaijiao/iftoc/blob/master/iconfont.h) [Iconfont.m](https://github.com/panghaijiao/iftoc/blob/master/iconfont.m)
 
 ## Installation
 
 Install it yourself as:
 
-    $ gem install iftoc
+	$ gem install iftoc
 
 ## Usage
 
-Usage: iftoc \<cssfile> [-out \<outpath>]
+Usage: iftoc \<cssfile> [--out \<outpath>]
 
+## e.g.
+ 
+	$ iftoc iconfont.css
+
+or
+
+	$ iftoc iconfont.css --out /iconfont
+    
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
