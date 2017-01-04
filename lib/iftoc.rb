@@ -98,7 +98,7 @@ module Iftoc
 
     iconfontMap.each { |key, value|
       mString = mString + "- (NSString *)icon" + key + " {\n";
-      mString = mString + "    return @\"\U0000" + value + "\";" + "\n}\n\n"
+      mString = mString + "    return @\"\\U0000" + value + "\";" + "\n}\n\n"
     }
 
     mString = mString + "@end"

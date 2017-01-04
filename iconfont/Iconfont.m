@@ -2,7 +2,7 @@
 //  IconFont.m
 //  AutoCoding
 //
-//  Created by AutoCoding on 2017/01/04.
+//  Created by AutoCoding on 2017/01/05.
 //  Copyright © 2017年 olinone. All rights reserved.
 //
       
@@ -24,11 +24,11 @@
 }
 
 - (NSString *)icongouwuche {
-    return @"U0000e604";
+    return @"\U0000e604";
 }
 
 - (NSString *)iconqiqiu {
-    return @"U0000e605";
+    return @"\U0000e605";
 }
 
 @end
