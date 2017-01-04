@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["庞海礁"]
   spec.email         = ["275742376@qq.com"]
 
-  spec.summary       = %q{Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{Write a longer description or delete this line.}
+  spec.summary       = %q{Converts IconFont to OC code.}
+  spec.description   = %q{A tool that converts IconFont to OC code automatically.}
   spec.homepage      = "https://github.com/panghaijiao/iftoc"
   spec.license       = "MIT"
 
