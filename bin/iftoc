@@ -1,0 +1,67 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'iftoc'
+
+$inpath = ARGV[0]
+$outpath = File.dirname(__FILE__)
+
+$helpString = <<-EOB
+Usage: iftoc <cssfile> [-out <outpath>]
+EOB
+
+def paramCheck
+
+  OptionParser.new do |opts|
+    opts.banner = $helpString
+    opts.on("-o", "--out <outpath>", String) do |value|
+      $outpath = value
+    end
+  end.parse!
+
+  if ARGV.count < 1 then
+    puts $helpString
+    exit(1)
+  end
+
+  if !File.exist?($inpath) then
+    puts "No such file: " + $inpath
+    exit(1)
+  end
+
+  if !File.exist?($outpath) then
+    puts "No such directory: " + $outpath
+    exit(1)
+  end
+
+end
+
+# main
+paramCheck
+
+io = File.open($inpath)
+iconfontName = Iftoc.parseFontName(io)
+iconfontMap = Iftoc.parseIconFont(io)
+io.close
+
+# exception
+if !iconfontName || iconfontMap.count < 1 then
+  print("parse error!")
+  exit(1)
+end
+
+# hfile
+hfilepath = $outpath+"/Iconfont.h"
+Iftoc.putStringToFile(Iftoc.generateHFile(iconfontMap), hfilepath)
+
+# mfile
+mfilepath = $outpath+"/Iconfont.m"
+Iftoc.putStringToFile(Iftoc.generateMFile(iconfontName, iconfontMap), mfilepath)
+
+puts "Done!"
+
+
+
+
+
+
