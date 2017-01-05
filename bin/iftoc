@@ -4,7 +4,7 @@ require 'optparse'
 require 'iftoc'
 
 $inpath = ARGV[0]
-$outpath = File.dirname(__FILE__)
+$outpath = Dir::pwd
 
 $helpString = <<-EOB
 Usage: iftoc <cssfile> [--out <outpath>]
