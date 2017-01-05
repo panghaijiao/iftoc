@@ -1,13 +1,14 @@
 #!/usr/bin/env ruby
 
 require 'optparse'
+require 'rexml/document'
 require 'iftoc'
 
 $inpath = ARGV[0]
 $outpath = Dir::pwd
 
 $helpString = <<-EOB
-Usage: iftoc <cssfile> [--out <outpath>]
+Usage: iftoc <svgfile | cssfile> [--out <outpath>]
 EOB
 
 def paramCheck
@@ -36,17 +37,43 @@ def paramCheck
 
 end
 
+def parseSVGFontName(xmlContext)
+  fontelement = xmlContext.root.elements["defs"].elements["font"]
+  return fontelement.elements["font-face"].attributes["font-family"]
+end
+
+def parseSVGIconFont(xmlContext)
+  iconfonts = Hash.new
+  fontelement = xmlContext.root.elements["defs"].elements["font"]
+  fontelement.get_elements("glyph").each { |font|
+    name = font.attributes["glyph-name"]
+    unicode = font.attributes["unicode"].to_s.delete("#x;")
+    if unicode.length == 4 then
+      iconfonts[name] = unicode
+    end
+  }
+  return iconfonts
+end
+
 # main
 paramCheck
 
 io = File.open($inpath)
-iconfontName = Iftoc.parseFontName(io)
-iconfontMap = Iftoc.parseIconFont(io)
+doc = REXML::Document.new(io.read.to_s.delete("&"))
+if doc.root then
+  iconfontName = parseSVGFontName(doc)
+  iconfontMap = parseSVGIconFont(doc)
+else
+  io.close
+  io = File.open($inpath)
+  iconfontName = Iftoc.parseCSSFontName(io)
+  iconfontMap = Iftoc.parseCSSIconFont(io)
+end
 io.close
 
 # exception
 if !iconfontName || iconfontMap.count < 1 then
-  print("parse error!")
+  print("parse error! ")
   exit(1)
 end
 

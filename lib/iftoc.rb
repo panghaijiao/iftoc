@@ -5,8 +5,26 @@ module Iftoc
 
   $fontNameRegexpStr = /font-family: "(.*)"/
   $iconRegexpStr = /.icon-(.*):before { content: "\\(.*)"/
-  
-  def parseFontName(file)
+
+  def parseSVGFontName(xmlContext)
+    fontelement = xmlContext.root.elements["defs"].elements["font"]
+    return fontelement.elements["font-face"].attributes["font-family"]
+  end
+
+  def parseSVGIconFont(xmlContext)
+    iconfonts = Hash.new
+    fontelement = xmlContext.root.elements["defs"].elements["font"]
+    fontelement.get_elements("glyph").each { |font|
+      name = font.attributes["glyph-name"]
+      unicode = font.attributes["unicode"].to_s.delete("#x;")
+      if unicode.length == 4 then
+        iconfonts[name] = unicode
+      end
+    }
+    return iconfonts
+  end
+
+  def parseCSSFontName(file)
       file.each_line do |line|
           line.chomp!
           $fontNameRegexpStr =~ line
@@ -18,7 +36,7 @@ module Iftoc
       return nil
   end
   
-  def parseIconFont(file)
+  def parseCSSIconFont(file)
       iconfonts = Hash.new
       file.each_line do |line|
           line.chomp!
@@ -113,8 +131,10 @@ module Iftoc
           hio.close
   end
 
-  module_function :parseFontName
-  module_function :parseIconFont
+  module_function :parseSVGFontName
+  module_function :parseSVGIconFont
+  module_function :parseCSSFontName
+  module_function :parseCSSIconFont
   module_function :generateHFile
   module_function :generateMFile
   module_function :putStringToFile
