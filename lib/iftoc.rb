@@ -44,6 +44,7 @@ module Iftoc
 //
       
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
       
 #define theIconFont [IconFont shareInstance]
       
