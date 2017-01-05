@@ -18,25 +18,29 @@ Install it yourself as:
 
 ## Usage
 
-Usage: iftoc \<cssfile> [--out \<outpath>]
+Usage: iftoc \<svgfile | cssfile> [--out \<outpath>]
 
 ## e.g.
- 
+ 	
+	$ iftoc iconfont.svg
+
+or
+
 	$ iftoc iconfont.css
 
 or
 
-	$ iftoc iconfont.css --out /iconfont
+	$ iftoc iconfont.svg --out /iconfont
 
-## iconfont.css
+## iconfont.svg & iconfont.css
 
-Iconfont.css can be created automatically from web [http://www.iconfont.cn](http://www.iconfont.cn/)
+Iconfont.svg or Iconfont.css can be created automatically from [http://www.iconfont.cn](http://www.iconfont.cn/)
 
 .
 
 ├── **iconfont.css**
 
-├── iconfont.svg
+├── **iconfont.svg**
 
 ├── iconfont.ttf
 
