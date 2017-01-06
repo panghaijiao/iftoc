@@ -3,7 +3,7 @@
 ![](http://img.shields.io/travis/CocoaPods/CocoaPods/master.svg?style=flat)
 ![](http://img.shields.io/gem/v/cocoapods.svg?style=flat)
 
-Converts SVG or CSS StyleSheets for IconFont like [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css) to [OC or Swift code file](https://github.com/panghaijiao/iftoc/tree/master/iconfont) automatically
+Converts SVG or CSS StyleSheets for IconFont like [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css) to [OC or Swift](https://github.com/panghaijiao/iftoc/tree/master/iconfont) code file automatically
 
 ## Example
 
