@@ -17,7 +17,8 @@ module Iftoc
     fontelement.get_elements("glyph").each { |font|
       name = font.attributes["glyph-name"]
       unicode = font.attributes["unicode"].to_s.delete("#x;")
-      if unicode.length == 4 then
+      if name && unicode.length == 4 then
+        name = name.gsub(/[^A-Za-z\d_]/, '')
         iconfonts[name] = unicode
       end
     }
@@ -42,8 +43,10 @@ module Iftoc
           line.chomp!
           $iconRegexpStr =~ line
           name = $1
-          if name then
-              iconfonts[name] = $2
+          unicode = $2.to_s
+          if name && unicode.length == 4 then
+              name = name.to_s.gsub(/[^A-Za-z\d_]/, '')
+              iconfonts[name] = unicode
           end
       end
       return iconfonts
@@ -126,9 +129,9 @@ module Iftoc
   end
           
   def putStringToFile(text, path)
-          hio = File.open(path, "w+")
-          hio.puts(text)
-          hio.close
+    hio = File.open(path, "w+")
+    hio.puts(text)
+    hio.close
   end
 
   module_function :parseSVGFontName

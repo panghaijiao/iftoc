@@ -37,32 +37,14 @@ def paramCheck
 
 end
 
-def parseSVGFontName(xmlContext)
-  fontelement = xmlContext.root.elements["defs"].elements["font"]
-  return fontelement.elements["font-face"].attributes["font-family"]
-end
-
-def parseSVGIconFont(xmlContext)
-  iconfonts = Hash.new
-  fontelement = xmlContext.root.elements["defs"].elements["font"]
-  fontelement.get_elements("glyph").each { |font|
-    name = font.attributes["glyph-name"]
-    unicode = font.attributes["unicode"].to_s.delete("#x;")
-    if unicode.length == 4 then
-      iconfonts[name] = unicode
-    end
-  }
-  return iconfonts
-end
-
 # main
 paramCheck
 
 io = File.open($inpath)
 doc = REXML::Document.new(io.read.to_s.delete("&"))
 if doc.root then
-  iconfontName = parseSVGFontName(doc)
-  iconfontMap = parseSVGIconFont(doc)
+  iconfontName = Iftoc.parseSVGFontName(doc)
+  iconfontMap = Iftoc.parseSVGIconFont(doc)
 else
   io.close
   io = File.open($inpath)
