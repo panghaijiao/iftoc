@@ -15,6 +15,10 @@ Converts SVG or CSS StyleSheets for IconFont like [iconfont.css](https://github.
 Install it yourself as:
 
 	$ gem install iftoc
+	
+Update it yourself as:
+
+	$ gem update iftoc
 
 ## Usage
 
