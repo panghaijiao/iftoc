@@ -3,12 +3,12 @@
 ![](http://img.shields.io/travis/CocoaPods/CocoaPods/master.svg?style=flat)
 ![](http://img.shields.io/gem/v/cocoapods.svg?style=flat)
 
-Converts SVG or CSS StyleSheets for IconFont like [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css) to [OC code file](https://github.com/panghaijiao/iftoc/tree/master/iconfont) automatically
+Converts SVG or CSS StyleSheets for IconFont like [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css) to [OC or Swift code file](https://github.com/panghaijiao/iftoc/tree/master/iconfont) automatically
 
 ## Example
 
 - Input: [iconfont.css](https://github.com/panghaijiao/iftoc/blob/master/iconfont.css) or [iconfont.svg](https://github.com/panghaijiao/iftoc/blob/master/iconfont.svg)
-- Output: [Iconfont.h](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.h)  [Iconfont.m](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.m)
+- Output: [Iconfont.h](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.h)  [Iconfont.m](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.m) or [Iconfont.swift](https://github.com/panghaijiao/iftoc/blob/master/iconfont/Iconfont.swift)
 
 ## Installation
 
@@ -22,7 +22,7 @@ Update it yourself as:
 
 ## Usage
 
-Usage: iftoc \<svgfile | cssfile> [--out \<outpath>]
+Usage: iftoc \<svgfile | cssfile> [--out \<outpath>] [--lang \<language>]
 
 ## e.g.
  	
@@ -34,7 +34,11 @@ or
 
 or
 
-	$ iftoc iconfont.svg --out /iconfont
+	$ iftoc iconfont.svg -o /iconfont
+	
+or
+
+	$ iftoc iconfont.svg -o /iconfont -l swift
 
 ## iconfont.svg & iconfont.css
 
