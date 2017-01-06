@@ -6,9 +6,10 @@ require 'iftoc'
 
 $inpath = ARGV[0]
 $outpath = Dir::pwd
+$outStyle = "OC"
 
 $helpString = <<-EOB
-Usage: iftoc <svgfile | cssfile> [--out <outpath>]
+Usage: iftoc <svgfile | cssfile> [--out <outpath>] [--lang <language>]
 EOB
 
 def paramCheck
@@ -17,6 +18,12 @@ def paramCheck
     opts.banner = $helpString
     opts.on("-o", "--out <outpath>", String) do |value|
       $outpath = value
+    end
+
+    opts.on("-l", "--lang <language>", String) do |value|
+      if value.to_s.downcase == "swift" then
+        $outStyle = "Swift"
+      end
     end
   end.parse!
 
@@ -59,13 +66,23 @@ if !iconfontName || iconfontMap.count < 1 then
   exit(1)
 end
 
-# hfile
-hfilepath = $outpath+"/Iconfont.h"
-Iftoc.putStringToFile(Iftoc.generateHFile(iconfontMap), hfilepath)
+if $outStyle == "Swift" then
+
+  #swift
+  swiftfilepath = $outpath+"/Iconfont.swift"
+  Iftoc.putStringToFile(Iftoc.generateSwiftFile(iconfontName, iconfontMap), swiftfilepath)
+
+else
+
+  # hfile
+  hfilepath = $outpath+"/Iconfont.h"
+  Iftoc.putStringToFile(Iftoc.generateHFile(iconfontMap), hfilepath)
 
 # mfile
-mfilepath = $outpath+"/Iconfont.m"
-Iftoc.putStringToFile(Iftoc.generateMFile(iconfontName, iconfontMap), mfilepath)
+  mfilepath = $outpath+"/Iconfont.m"
+  Iftoc.putStringToFile(Iftoc.generateMFile(iconfontName, iconfontMap), mfilepath)
+
+end
 
 puts "Done!"
 

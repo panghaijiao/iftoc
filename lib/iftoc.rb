@@ -127,6 +127,32 @@ module Iftoc
 
     return mString
   end
+
+  def generateSwiftFile(iconFontName, iconfontMap)
+    string1 = <<-EOB
+//
+//  Iconfont.swift
+//  AutoCoding
+//
+    EOB
+
+    string2 = <<-EOB
+//  Copyright © 2017年 olinone. All rights reserved.
+//
+
+import UIKit
+
+public func iconFontWithSize(size: CGFloat) -> UIFont {
+    EOB
+
+    mString = string1 + "//  Created by AutoCoding on " + Time.new.strftime("%Y/%m/%d") + ".\n" + string2 + "    return UIFont(name: \"" + iconFontName + "\", size: size)!" + "\n}\n\n"
+
+    iconfontMap.each { |key, value|
+      mString = mString + "let icon" + key + " = \"\\u{"+ value +"}\"\n\n"
+    }
+
+    return mString
+  end
           
   def putStringToFile(text, path)
     hio = File.open(path, "w+")
@@ -140,6 +166,7 @@ module Iftoc
   module_function :parseCSSIconFont
   module_function :generateHFile
   module_function :generateMFile
+  module_function :generateSwiftFile
   module_function :putStringToFile
 
 end
